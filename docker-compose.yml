@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+
+  app:
+    image: odoo:11
+    container_name: malphi_app
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - malphi_odoo-web-data:/var/lib/odoo
+      - ./app/malphi_odoo_addons:/mnt/extra-addons
+    environment:
+      - PYTHONUNBUFFERED=1
+      - USER=admin
+      - PASSWORD=easy2rem
+
+  db:
+    image: postgres:10
+    container_name: malphi_db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=easy2rem
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - malphi_odoo-db-data:/var/lib/postgresql/data/pgdata
+
+volumes:
+  malphi_odoo-web-data:
+    name: malphi_app
+  malphi_odoo-db-data:
+    name: malphi_db
+
