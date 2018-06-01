@@ -15,7 +15,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - USER=admin
-      - PASSWORD=easy2rem
+      - PASSWORD=admin
 
   db:
     image: postgres:10
@@ -24,7 +24,7 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=easy2rem
+      - POSTGRES_PASSWORD=admin
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - malphi_odoo-db-data:/var/lib/postgresql/data/pgdata

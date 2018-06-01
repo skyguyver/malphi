@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  
+  <record model="ir.ui.view" id="customer_form_view">
+    <field name="name">course.form.view</field>
+    <field name="model">malphi.customer</field>
+    <field name="arch" type="xml">
+        <form string="Customer Form">
+            <sheet>
+                <group>
+                  <field name="picture"/>
+                  <field name="title"/>
+                  <field name="name"/>
+                  <field name="address"/>
+                  <field name="mobile_no"/>
+                  <field name="date_of_birth"/>
+                  <field name="country_of_birth_id"/>
+                  <field name="nationality_id"/>
+                  <field name="residency_id"/>
+                  <field name="comments"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+  </record>
+
+
+  <!-- ================================= -->
+  <!-- ========== search view ========== -->
+  <!-- ================================= -->
+
+  <record model="ir.ui.view" id="customer_search_view">
+    <field name="name">customer.search.view</field>
+    <field name="model">malphi.customer</field>
+    <field name="arch" type="xml">
+        <search>
+            <field name="name"/>
+        </search>
+    </field>
+  </record>
+
+  <!-- ================================= -->
+  <!-- ============ action  ============ -->
+  <!-- ================================= -->
+  
+  <record model="ir.actions.act_window" id="customer_action">
+      <field name="name">Customer</field>
+      <field name="res_model">malphi.customer</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="oe_view_nocontent_create">Create the first customer
+          </p>
+      </field>
+  </record>
+
+
+  <!-- ================================= -->
+  <!-- ============== menu ============= -->
+  <!-- ================================= -->
+
+  <!-- top level menu: no parent -->
+  <menuitem id="main_malphi_menu" name="MalPhi"/>
+  <!-- A first level -->
+  <menuitem id="malphi_menu" name="Manage" parent="main_malphi_menu"/>
+  <!-- the menuitem  -->
+  <menuitem id="customer_menu" name="Customer" parent="malphi_menu"
+            action="customer_action"/>
+
+</odoo>
